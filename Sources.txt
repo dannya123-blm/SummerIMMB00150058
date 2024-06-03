@@ -20,4 +20,7 @@ Audio off Button -https://www.iconfinder.com/icons/679544/disable_media_mute_no_
 
 SIDESCROLLER MAP PARTS - https://assetstore.unity.com/packages/3d/environments/hypepoly-isometric-tiles-standart-lite-193779
 
+PORTAL - https://assetstore.unity.com/packages/3d/environments/fantasy/the-portal-collection-205438
+
+Player - https://assetstore.unity.com/packages/3d/characters/low-character-pack-free-sample-192954
 // This code is based on from SymfonyCasts & Wschools:
