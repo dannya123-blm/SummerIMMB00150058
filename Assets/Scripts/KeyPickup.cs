@@ -1,14 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KeyPickup : MonoBehaviour
 {
-    private Inventory inventory;
-
-    void Start()
-    {
-        // Find the Inventory component on the player
-        inventory = GameObject.FindWithTag("Player").GetComponent<Inventory>();
-    }
+    private int keysCollected = 0; // Counter to track the number of keys collected
 
     // Called when the player collides with another collider
     private void OnTriggerEnter(Collider other)
@@ -19,13 +14,10 @@ public class KeyPickup : MonoBehaviour
             // Destroy the key GameObject
             Destroy(other.gameObject);
 
-            // Increment the keys collected counter in the Inventory
-            if (inventory != null)
-            {
-                inventory.CollectKey();
-            }
+            // Increment the keys collected counter
+            keysCollected++;
 
-            Debug.Log("Key collected! Total keys collected: " + inventory.keysCollected);
+            Debug.Log("Key collected! Total keys collected: " + keysCollected);
         }
     }
 }
