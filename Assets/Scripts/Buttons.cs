@@ -5,12 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
-    // This method will be called when any Start button is pressed for any of the scenes
-    public void OnStartButtonPressed()
+    
+    public void LoadLevel1()
     {
         SceneManager.LoadScene("Level_1");
+    }
+
+   
+    public void LoadLevel2()
+    {
         SceneManager.LoadScene("Level_2");
+    }
+
+
+    public void LoadGameWon()
+    {
         SceneManager.LoadScene("GameWon");
+    }
+
+    public void LoadGameOver()
+    {
         SceneManager.LoadScene("GameOver");
     }
 }

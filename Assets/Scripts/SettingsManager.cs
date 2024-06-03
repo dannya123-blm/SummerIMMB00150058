@@ -12,25 +12,39 @@ public class SettingsManager : MonoBehaviour
         backgroundMusic = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>();
 
         // Load saved audio setting
-        audioToggle.isOn = PlayerPrefs.GetInt("AudioEnabled", 1) == 1;
+        bool isAudioEnabled = PlayerPrefs.GetInt("AudioEnabled", 1) == 1;
+        audioToggle.isOn = isAudioEnabled;
 
         // Apply the initial settings
-        OnAudioToggle(audioToggle);
+        OnAudioToggle(isAudioEnabled);
 
-        // Add listeners
-        audioToggle.onValueChanged.AddListener(delegate { OnAudioToggle(audioToggle); });
+ 
+        audioToggle.onValueChanged.AddListener(delegate { OnAudioToggle(audioToggle.isOn); });
     }
 
-    public void OnAudioToggle(Toggle toggle)
+    public void OnAudioToggle(bool isOn)
     {
         // Save the audio setting
-        PlayerPrefs.SetInt("AudioEnabled", toggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("AudioEnabled", isOn ? 1 : 0);
         PlayerPrefs.Save();
 
         // Mute or unmute the background music
         if (backgroundMusic != null)
         {
-            backgroundMusic.mute = !toggle.isOn;
+            backgroundMusic.mute = !isOn;
+        }
+    }
+
+    public void ToggleAudio()
+    {
+        if (backgroundMusic != null)
+        {
+            bool isMuted = !backgroundMusic.mute;
+            backgroundMusic.mute = isMuted;
+
+            // Save the audio setting
+            PlayerPrefs.SetInt("AudioEnabled", isMuted ? 0 : 1);
+            PlayerPrefs.Save();
         }
     }
 }
