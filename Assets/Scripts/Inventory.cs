@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public int totalKeys = 0;
-    public int keysCollected = 0; // Make this public
-    public Text keyText; // Reference to the UI Text element
+    public int keysCollected = 0;
+    public Text keyText;
 
     void Start()
     {
@@ -23,3 +23,4 @@ public class Inventory : MonoBehaviour
         keyText.text = "Keys: " + keysCollected + "/" + totalKeys;
     }
 }
+
