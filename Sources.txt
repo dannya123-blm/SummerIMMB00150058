@@ -22,5 +22,7 @@ SIDESCROLLER MAP PARTS - https://assetstore.unity.com/packages/3d/environments/h
 
 PORTAL - https://assetstore.unity.com/packages/3d/environments/fantasy/the-portal-collection-205438
 
+Keys - https://assetstore.unity.com/packages/3d/props/rust-key-167590
+
 Player - https://assetstore.unity.com/packages/3d/characters/low-character-pack-free-sample-192954
 // This code is based on from SymfonyCasts & Wschools:

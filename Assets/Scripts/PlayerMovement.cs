@@ -5,26 +5,24 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
     private Rigidbody rb;
-    private Animator animator;
     private bool isGrounded;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         Move();
         Jump();
-        UpdateAnimator();
     }
 
     private void Move()
     {
         float moveInput = 0f;
 
+        // Use A and D keys for movement
         if (Input.GetKey(KeyCode.A))
         {
             moveInput = -1f;
@@ -44,12 +42,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
-    }
-
-    private void UpdateAnimator()
-    {
-        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
-        animator.SetBool("IsGrounded", isGrounded);
     }
 
     private void OnCollisionEnter(Collision collision)
