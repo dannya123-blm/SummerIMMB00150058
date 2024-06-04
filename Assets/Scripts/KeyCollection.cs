@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class KeyCollect : MonoBehaviour
 {
-    public AudioClip keyAudio; 
+    public AudioClip keyAudio;
     private AudioSource audioSource;
 
     private void Start()
@@ -15,6 +15,8 @@ public class KeyCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player collided with key.");
+
             // This updates the player's key count
             Inventory playerInventory = other.GetComponent<Inventory>();
             if (playerInventory != null)
@@ -25,6 +27,7 @@ public class KeyCollect : MonoBehaviour
             // Play the key collection sound
             if (audioSource != null && keyAudio != null)
             {
+                Debug.Log("Playing key collection sound.");
                 audioSource.PlayOneShot(keyAudio);
             }
 

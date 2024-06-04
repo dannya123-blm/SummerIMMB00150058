@@ -26,6 +26,9 @@ Keys - https://assetstore.unity.com/packages/3d/props/rust-key-167590
 
 RPG Monster DUO PBR POLYTART Enemy - https://assetstore.unity.com/packages/3d/characters/creatures/rpg-monster-duo-pbr-polyart-157762
 
+Cant enter portal audio - https://pixabay.com/sound-effects/080205-life-lost-game-over-89697/
+
+Enter portal audio - https://pixabay.com/sound-effects/portal-phase-jump-6355/
 
 Player - https://assetstore.unity.com/packages/3d/characters/low-character-pack-free-sample-192954
 // This code is based on from SymfonyCasts & Wschools:
