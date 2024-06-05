@@ -8661,12 +8661,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 123021215}
+  - {fileID: 354331816}
+  - {fileID: 1105049127}
+  - {fileID: 2083278168}
+  - {fileID: 1537889473}
   keyPrefabs:
-  - {fileID: 242791831}
+  - {fileID: 721352178}
+  - {fileID: 1908155834}
+  - {fileID: 1516300965}
   numberOfKeys: 3
   numberOfEnemies: 4
-  spawnArea: {x: 10, y: 1, z: 10}
 --- !u!4 &2036629295
 Transform:
   m_ObjectHideFlags: 0
@@ -8676,7 +8680,7 @@ Transform:
   m_GameObject: {fileID: 2036629293}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 629.9511, y: -87.71672, z: -418.0509}
+  m_LocalPosition: {x: 687.01, y: 0.15, z: -249.896}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

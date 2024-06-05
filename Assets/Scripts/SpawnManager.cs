@@ -1,12 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs; 
-    public GameObject[] keyPrefabs; 
-    public int numberOfKeys = 3; 
-    public int numberOfEnemies = 3; 
-    public Vector3 spawnArea; // Area in which to spawn keys and enemies
+    public GameObject[] enemyPrefabs;
+    public GameObject[] keyPrefabs;
+    public int numberOfKeys = 3;
+    public int numberOfEnemies = 4;
+
+    private Vector3[] spawnPoints = new Vector3[]
+    {
+        new Vector3(-45.265f, 24.98f, 64.531f),
+        new Vector3(-30.45874f, 25.00671f, 64.25317f),
+        new Vector3(-42.56873f, 25.00671f, 64.25317f)
+    };
 
     private GameObject[] spawnedKeys;
     private GameObject[] spawnedEnemies;
@@ -24,15 +32,9 @@ public class SpawnManager : MonoBehaviour
     {
         for (int i = 0; i < numberOfKeys; i++)
         {
-            Vector3 randomPosition = new Vector3(
-                Random.Range(-spawnArea.x / 2, spawnArea.x / 2),
-                Random.Range(-spawnArea.y / 2, spawnArea.y / 2),
-                Random.Range(-spawnArea.z / 2, spawnArea.z / 2)
-            );
-
-            // Select a random key prefab from the array
+            Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)];
             GameObject keyPrefab = keyPrefabs[Random.Range(0, keyPrefabs.Length)];
-            spawnedKeys[i] = Instantiate(keyPrefab, randomPosition, Quaternion.identity);
+            spawnedKeys[i] = Instantiate(keyPrefab, spawnPosition, Quaternion.identity);
         }
     }
 
@@ -40,15 +42,9 @@ public class SpawnManager : MonoBehaviour
     {
         for (int i = 0; i < numberOfEnemies; i++)
         {
-            Vector3 randomPosition = new Vector3(
-                Random.Range(-spawnArea.x / 2, spawnArea.x / 2),
-                Random.Range(-spawnArea.y / 2, spawnArea.y / 2),
-                Random.Range(-spawnArea.z / 2, spawnArea.z / 2)
-            );
-
-            // Select a random enemy prefab from the array
+            Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)];
             GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-            spawnedEnemies[i] = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
+            spawnedEnemies[i] = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
         }
     }
 
