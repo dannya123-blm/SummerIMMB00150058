@@ -5911,6 +5911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1538599537}
   - component: {fileID: 1538599536}
+  - component: {fileID: 1538599538}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -5955,6 +5956,21 @@ Transform:
   - {fileID: 1925011504}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1538599538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538599535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a4d0904b77f7b4082d833e49b5fc27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 10
+  destroyOnCollision: 0
+  moveSpeed: 3
 --- !u!4 &1546872060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1534297885867037253, guid: 3c35546a5208df9409b96c23d4121d80, type: 3}
@@ -6802,6 +6818,7 @@ GameObject:
   - component: {fileID: 1673542814}
   - component: {fileID: 1673542818}
   - component: {fileID: 1673542819}
+  - component: {fileID: 1673542820}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -6915,6 +6932,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyAudio: {fileID: 8300000, guid: e622b1c2f956d8b4cb183c0ab5d74762, type: 3}
+--- !u!114 &1673542820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673542813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b95f3330615024f889de1f0a8feb77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 30
 --- !u!1001 &1677660474
 PrefabInstance:
   m_ObjectHideFlags: 0
