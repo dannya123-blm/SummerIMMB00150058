@@ -32,3 +32,7 @@ Enter portal audio - https://pixabay.com/sound-effects/portal-phase-jump-6355/
 
 Player - https://assetstore.unity.com/packages/3d/characters/low-character-pack-free-sample-192954
 // This code is based on from SymfonyCasts & Wschools:
+
+Daeth Audio -https://pixabay.com/sound-effects/088543-cheesy-death-noise-82782/
+
+CLOUDS - https://assetstore.unity.com/packages/3d/3le-low-poly-cloud-pack-65911

@@ -1,28 +1,38 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
+    public HealthBar healthBar;
+    public AudioClip deathAudioClip;  
+    private AudioSource audioSource;  
 
-    private void Start()
+    void Start()
     {
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+        audioSource = GetComponent<AudioSource>();  
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int damage)
     {
-        currentHealth -= amount;
-        if (currentHealth <= 0)
+        currentHealth -= damage;
+        if (currentHealth < 0)
+            currentHealth = 0;
+
+        healthBar.SetHealth(currentHealth, maxHealth);
+
+        if (currentHealth == 0)
         {
             Die();
         }
     }
 
-    private void Die()
+    void Die()
     {
-       
-        Debug.Log("Player died!");
-        // will the player die ever?!!!!!
+        Debug.Log("The player has died");
+        audioSource.PlayOneShot(deathAudioClip);  // Play the death audio clip
     }
 }
