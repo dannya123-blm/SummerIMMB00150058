@@ -32,11 +32,13 @@ Enter portal audio - https://pixabay.com/sound-effects/portal-phase-jump-6355/
 
 Player - https://assetstore.unity.com/packages/3d/characters/low-character-pack-free-sample-192954
 
+HealthBar- https://assetstore.unity.com/packages/tools/utilities/health-system-for-dummies-215755
 
-PlayerHealthBar- https://assetstore.unity.com/packages/tools/utilities/health-system-for-dummies-215755
+Level1Audio- https://pixabay.com/music/video-games-pd-feelings-2-go-ahead-mix-211189/
 
-Level 1 Backkground Music - https://pixabay.com/music/video-games-pd-feelings-2-go-ahead-mix-211189/
+DeathAudio - https://pixabay.com/sound-effects/088543-cheesy-death-noise-82782/
 
 CLOUDS - https://assetstore.unity.com/packages/3d/3le-low-poly-cloud-pack-65911
 
+Obstacles - https://assetstore.unity.com/packages/3d/props/ball-pack-446
 // This code is based on from SymfonyCasts & Wschools:
