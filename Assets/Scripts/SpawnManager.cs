@@ -11,9 +11,8 @@ public class SpawnManager : MonoBehaviour
 
     private Vector3[] spawnPoints = new Vector3[]
     {
-        new Vector3(-45.265f, 24.98f, 64.531f),
-        new Vector3(-30.45874f, 25.00671f, 64.25317f),
-        new Vector3(-42.56873f, 25.00671f, 64.25317f)
+        new Vector3(11.79f, -1.872f, 0.7969513f),
+       
     };
 
     private GameObject[] spawnedKeys;
@@ -25,7 +24,6 @@ public class SpawnManager : MonoBehaviour
         spawnedEnemies = new GameObject[numberOfEnemies];
         SpawnKeys();
         SpawnEnemies();
-        DeactivateSpawnedObjects();
     }
 
     void SpawnKeys()
@@ -47,42 +45,5 @@ public class SpawnManager : MonoBehaviour
             spawnedEnemies[i] = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
         }
     }
-
-    void DeactivateSpawnedObjects()
-    {
-        foreach (GameObject key in spawnedKeys)
-        {
-            if (key != null)
-            {
-                key.SetActive(false);
-            }
-        }
-
-        foreach (GameObject enemy in spawnedEnemies)
-        {
-            if (enemy != null)
-            {
-                enemy.SetActive(false);
-            }
-        }
-    }
-
-    public void ActivateSpawnedObjects()
-    {
-        foreach (GameObject key in spawnedKeys)
-        {
-            if (key != null)
-            {
-                key.SetActive(true);
-            }
-        }
-
-        foreach (GameObject enemy in spawnedEnemies)
-        {
-            if (enemy != null)
-            {
-                enemy.SetActive(true);
-            }
-        }
-    }
 }
+

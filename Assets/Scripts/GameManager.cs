@@ -12,6 +12,6 @@ public class GameManager : MonoBehaviour
 
     void StartGame()
     {
-        spawnManager.ActivateSpawnedObjects();
+       
     }
 }
