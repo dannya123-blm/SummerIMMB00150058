@@ -40,5 +40,7 @@ DeathAudio - https://pixabay.com/sound-effects/088543-cheesy-death-noise-82782/
 
 CLOUDS - https://assetstore.unity.com/packages/3d/3le-low-poly-cloud-pack-65911
 
+simple sky
+
 Obstacles - https://assetstore.unity.com/packages/3d/props/ball-pack-446
 // This code is based on from SymfonyCasts & Wschools:
