@@ -1,50 +1,77 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
-    public HealthBar healthBar;
-    public AudioClip deathAudioClip;  
-    private AudioSource audioSource;  
+    public int maxHealth = 100; 
+    public int currentHealth; 
+    public HealthBar healthBar; // Reference to the health bar UI
+    public AudioClip deathAudioClip;
+    private AudioSource audioSource;
+    public bool hasShieldPowerUp = false; // Add shield power-up state
+    public GameObject shield;
+    public int shieldHits = 3; 
 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        audioSource = GetComponent<AudioSource>();  
+        audioSource = GetComponent<AudioSource>();
+        shield.SetActive(false); // Ensure the shield is initially inactive
     }
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        if (currentHealth < 0)
-            currentHealth = 0;
-
-        healthBar.SetHealth(currentHealth, maxHealth);
-
-        if (currentHealth == 0)
+        if (hasShieldPowerUp)
         {
-            Die();
+            // If the player has a shield, the shield absorbs the damage
+            shieldHits--; // Decrement the shield hit counter
+            Debug.Log("Shield absorbed the damage! Remaining hits: " + shieldHits);
+
+            if (shieldHits <= 0)
+            {
+                hasShieldPowerUp = false; // Shield is used up
+                shield.SetActive(false); // Hide the shield
+                Debug.Log("Shield is depleted!");
+            }
+        }
+        else
+        {
+            // If no shield, the player takes damage
+            currentHealth -= damage;
+            if (currentHealth < 0)
+                currentHealth = 0;
+
+            healthBar.SetHealth(currentHealth, maxHealth); // Ensure correct parameters are passed
+
+            if (currentHealth == 0)
+            {
+                Die();
+            }
         }
     }
 
     void Die()
     {
         audioSource.PlayOneShot(deathAudioClip);
-
-        // Start the coroutine to wait and then load the GameOver scene
         StartCoroutine(WaitAndLoadGameOverScene());
     }
+
     IEnumerator WaitAndLoadGameOverScene()
     {
-        // Wait for the length of the death audio clip
-        yield return new WaitForSeconds(deathAudioClip.length + 2f); 
-
-        // Load the GameOver scene
+        yield return new WaitForSeconds(deathAudioClip.length + 2f);
         SceneManager.LoadScene("GameOver");
     }
+
+    // Method to activate the shield power-up
+    public void ActivateShield()
+    {
+        hasShieldPowerUp = true;
+        shieldHits = 3; // Reset the shield hit counter to 3
+        shield.SetActive(true); // Show the shield
+        Debug.Log("Shield activated with " + shieldHits + " hits!");
+    }
 }
+
