@@ -5,13 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
-    
+
+
+    public void LoadLevel0()
+    {
+        SceneManager.LoadScene("Level_0");
+    }
+
     public void LoadLevel1()
     {
         SceneManager.LoadScene("Level_1");
     }
 
-   
     public void LoadLevel2()
     {
         SceneManager.LoadScene("Level_2");

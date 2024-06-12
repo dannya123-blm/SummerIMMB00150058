@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -32,7 +34,17 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("The player has died");
-        audioSource.PlayOneShot(deathAudioClip);  // Play the death audio clip
+        audioSource.PlayOneShot(deathAudioClip);
+
+        // Start the coroutine to wait and then load the GameOver scene
+        StartCoroutine(WaitAndLoadGameOverScene());
+    }
+    IEnumerator WaitAndLoadGameOverScene()
+    {
+        // Wait for the length of the death audio clip
+        yield return new WaitForSeconds(deathAudioClip.length + 2f); 
+
+        // Load the GameOver scene
+        SceneManager.LoadScene("GameOver");
     }
 }
