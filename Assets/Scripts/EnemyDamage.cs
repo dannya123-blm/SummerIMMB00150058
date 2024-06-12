@@ -36,7 +36,7 @@ public class EnemyDamage : MonoBehaviour
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                // Inflict damage to the player
+                // Inflict damage to the player, taking the shield into account
                 playerHealth.TakeDamage(damageAmount);
 
                 // Destroy the enemy if needed

@@ -1,39 +1,44 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 100; 
-    public int currentHealth; 
+    public int maxHealth = 100;
+    public int currentHealth;
     public HealthBar healthBar; // Reference to the health bar UI
     public AudioClip deathAudioClip;
     private AudioSource audioSource;
-    public bool hasShieldPowerUp = false; // Add shield power-up state
+    public bool hasTemporaryShield = false; // Add temporary shield state
     public GameObject shield;
-    public int shieldHits = 3; 
+    public int shieldHits = 3;
 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         audioSource = GetComponent<AudioSource>();
-        shield.SetActive(false); // Ensure the shield is initially inactive
+        if (shield != null)
+        {
+            shield.SetActive(false); // Ensure the shield is initially inactive
+        }
     }
 
     public void TakeDamage(int damage)
     {
-        if (hasShieldPowerUp)
+        if (hasTemporaryShield)
         {
-            // If the player has a shield, the shield absorbs the damage
+            // If the player has a temporary shield, the shield absorbs the damage
             shieldHits--; // Decrement the shield hit counter
             Debug.Log("Shield absorbed the damage! Remaining hits: " + shieldHits);
 
             if (shieldHits <= 0)
             {
-                hasShieldPowerUp = false; // Shield is used up
-                shield.SetActive(false); // Hide the shield
+                hasTemporaryShield = false; // Shield is used up
+                if (shield != null)
+                {
+                    shield.SetActive(false); // Hide the shield
+                }
                 Debug.Log("Shield is depleted!");
             }
         }
@@ -65,13 +70,29 @@ public class PlayerHealth : MonoBehaviour
         SceneManager.LoadScene("GameOver");
     }
 
-    // Method to activate the shield power-up
-    public void ActivateShield()
+    // Method to activate the temporary shield power-up
+    public void ActivateTemporaryShield(float duration)
     {
-        hasShieldPowerUp = true;
+        StartCoroutine(TemporaryShieldCoroutine(duration));
+    }
+
+    private IEnumerator TemporaryShieldCoroutine(float duration)
+    {
+        hasTemporaryShield = true;
         shieldHits = 3; // Reset the shield hit counter to 3
-        shield.SetActive(true); // Show the shield
-        Debug.Log("Shield activated with " + shieldHits + " hits!");
+        if (shield != null)
+        {
+            shield.SetActive(true); // Show the shield
+        }
+        Debug.Log("Temporary shield activated with " + shieldHits + " hits!");
+
+        yield return new WaitForSeconds(duration);
+
+        hasTemporaryShield = false;
+        if (shield != null)
+        {
+            shield.SetActive(false); // Hide the shield
+        }
+        Debug.Log("Temporary shield is now inactive.");
     }
 }
-
