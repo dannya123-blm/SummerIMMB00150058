@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
@@ -10,8 +9,16 @@ public class Portal : MonoBehaviour
             Inventory inventory = other.GetComponent<Inventory>();
             if (inventory != null && inventory.keysCollected >= inventory.totalKeys)
             {
-                // Load the next level or perform the desired action
-                SceneManager.LoadScene("Level_2");
+                // Start the portal interaction coroutine if it exists
+                PortalInteraction portalInteraction = GetComponent<PortalInteraction>();
+                if (portalInteraction != null)
+                {
+                    StartCoroutine(portalInteraction.ActivatePortal());
+                }
+                else
+                {
+                    Debug.LogError("PortalInteraction component not found!");
+                }
             }
             else
             {

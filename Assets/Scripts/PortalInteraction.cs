@@ -1,12 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; 
+using System.Collections; 
 
 public class PortalInteraction : MonoBehaviour
 {
     public AudioClip EnterPortalAudio;
     public AudioClip NotEnterPortal;
-    public GameObject successParticles;
-    public GameObject failParticles;
-    public Animator portalAnimator; // Optional animator for portal effects
 
     private AudioSource audioSource;
 
@@ -25,7 +24,7 @@ public class PortalInteraction : MonoBehaviour
             {
                 if (inventory.HasAllKeys())
                 {
-                    ActivatePortal();
+                    StartCoroutine(ActivatePortal());
                 }
                 else
                 {
@@ -35,7 +34,7 @@ public class PortalInteraction : MonoBehaviour
         }
     }
 
-    private void ActivatePortal()
+    public IEnumerator ActivatePortal()
     {
         // Play success sound
         if (EnterPortalAudio != null)
@@ -43,19 +42,8 @@ public class PortalInteraction : MonoBehaviour
             audioSource.PlayOneShot(EnterPortalAudio);
         }
 
-        // Play portal activation animation
-        if (portalAnimator != null)
-        {
-            portalAnimator.SetTrigger("Activate");
-        }
-
-        // Instantiate success particle effects
-        if (successParticles != null)
-        {
-            Instantiate(successParticles, transform.position, Quaternion.identity);
-        }
-
-        // Additional logic for portal activation (e.g., teleportation) can be added here
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Level_2");
     }
 
     private void FailToActivatePortal()
@@ -64,18 +52,6 @@ public class PortalInteraction : MonoBehaviour
         if (NotEnterPortal != null)
         {
             audioSource.PlayOneShot(NotEnterPortal);
-        }
-
-        // Play portal fail animation (if any)
-        if (portalAnimator != null)
-        {
-            portalAnimator.SetTrigger("Fail");
-        }
-
-        // Instantiate fail particle effects
-        if (failParticles != null)
-        {
-            Instantiate(failParticles, transform.position, Quaternion.identity);
         }
     }
 }
