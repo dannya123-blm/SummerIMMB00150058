@@ -36,16 +36,6 @@ Original Name from original source: portal-phase-jump-6355
 Url Link: https://pixabay.com/sound-effects/portal-phase-jump-6355/
 Statement: I have only edited the volume of the audio through unity
 
-Audio for Time Countdown:
-
-Name of Asset in folder: Timer
-Original Name from original source: short-beep-countdown-81121
-Url Link: https://pixabay.com/sound-effects/short-beep-countdown-81121/
-Statement: I have only edited the volume of the audio through unity
-
-// This code is based on from https://youtu.be/POq1i8FyRyQ?si=j5Qptbd0DywsHJyI:
-//Make a TIMER & COUNTDOWN in 5 Mins | Unity Tutorial for Beginners
-
 Audio for Death:
 
 Name of Asset in folder: DeathAudio
